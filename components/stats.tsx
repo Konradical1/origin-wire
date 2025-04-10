@@ -1,23 +1,23 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Check, Users, Award } from "lucide-react"
+import { Code2, Clock, Sparkles } from "lucide-react"
 
 const stats = [
   {
-    value: "100+",
-    label: "Projects Completed",
-    icon: Check,
+    value: "24/7",
+    label: "Support Available",
+    icon: Clock,
   },
   {
-    value: "95%",
-    label: "Client Satisfaction",
-    icon: Users,
+    value: "100%",
+    label: "Custom Solutions",
+    icon: Code2,
   },
   {
-    value: "10+",
-    label: "Industry Awards",
-    icon: Award,
+    value: "Fast",
+    label: "Project Delivery",
+    icon: Sparkles,
   },
 ]
 

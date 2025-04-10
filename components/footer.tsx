@@ -68,26 +68,38 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Services</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 tracking-wider uppercase">
+              Services
+            </h3>
+            <ul className="mt-1 space-y-1">
               <li>
-                <Link href="/services#web-development" className="text-gray-500 hover:text-primary dark:text-gray-400">
-                  Web Development
+                <Link href="/services#web-design" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  Web Design
                 </Link>
               </li>
               <li>
-                <Link href="/services#ui-ux-design" className="text-gray-500 hover:text-primary dark:text-gray-400">
-                  UI/UX Design
+                <Link href="/services#digital-marketing" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  Digital Marketing
                 </Link>
               </li>
               <li>
-                <Link href="/services#mobile-development" className="text-gray-500 hover:text-primary dark:text-gray-400">
-                  Mobile Development
+                <Link href="/services#graphic-design" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  Graphic Design
                 </Link>
               </li>
               <li>
-                <Link href="/services#e-commerce" className="text-gray-500 hover:text-primary dark:text-gray-400">
-                  E-commerce Solutions
+                <Link href="/services#content-creation" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  Content Creation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#analytics" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  Analytics
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#custom-solutions" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  Custom Solutions
                 </Link>
               </li>
             </ul>

@@ -11,7 +11,7 @@ const projects = [
     title: "Mullins-Taylor Group",
     description: "Custom-built website and digital marketing package for a local financial advisor to establish trust, improve accessibility, and showcase services clearly.",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Development",
+    category: "Web Design",
     secondaryCategory: "Digital Marketing",
     link: "/portfolio/mullins-taylor-group"
   },
@@ -19,42 +19,45 @@ const projects = [
     title: "ErinConoverMurray.com",
     description: "Elegant and modern website redesign for a Cincinnati-based interior designer, optimized for mobile and portfolio presentation.",
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Development",
+    category: "Web Design",
+    secondaryCategory: "Graphic Design",
     link: "/portfolio/erinconovermurray"
   },
   {
     title: "Excelerate Athletic Training",
     description: "Website and branding package for a personal training brand, focused on clear service offerings and lead generation.",
     image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Development",
-    secondaryCategory: "Digital Marketing",
+    category: "Web Design",
+    secondaryCategory: "Content Creation",
     link: "/portfolio/excelerate-athletic"
   },
   {
     title: "Photography by Lauren Olson",
     description: "Minimalist photography portfolio showcasing creative work with an intuitive layout and contact options.",
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Development",
+    category: "Graphic Design",
+    secondaryCategory: "Content Creation",
     link: "/portfolio/lauren-olson"
   },
   {
     title: "Eagle Creek Custom Builders",
     description: "Full website design for a custom home building company, featuring project galleries, testimonials, and service breakdowns.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Development",
+    category: "Web Design",
+    secondaryCategory: "Analytics",
     link: "/portfolio/eagle-creek"
   },
   {
     title: "GH Cardetailing",
     description: "Created a website handling booking and advertising for a premium auto detailing service, featuring online scheduling and service showcase.",
     image: "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Development",
+    category: "Custom Solutions",
     secondaryCategory: "Digital Marketing",
     link: "/portfolio/gh-cardetailing"
   }
 ]
 
-const allTags = ["Web Development", "Digital Marketing"]
+const allTags = ["Web Design", "Digital Marketing", "Graphic Design", "Content Creation", "Analytics", "Custom Solutions"]
 
 export default function Portfolio() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
@@ -79,8 +82,8 @@ export default function Portfolio() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-3 sm:mb-4">
             Our Portfolio
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Explore our latest projects and see how we've helped businesses transform their digital presence.
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto italic">
+            Explore OriginWire's latest projects and see how we've helped businesses transform their digital presence.
           </p>
         </motion.div>
 

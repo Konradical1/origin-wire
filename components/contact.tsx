@@ -50,8 +50,8 @@ export default function Contact() {
           <h2 className="text-3xl font-bold sm:text-4xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
             Get In Touch
           </h2>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to transform your digital presence? Let's start a conversation about your project.
+          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto italic">
+            Ready to transform your digital presence? Let's start a conversation with OriginWire about your project.
           </p>
         </motion.div>
 
@@ -66,35 +66,18 @@ export default function Contact() {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
 
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="mr-4 bg-gradient-to-br from-purple-600 to-blue-500 p-3 rounded-full">
-                      <Mail className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium">Email</h4>
-                      <p className="text-muted-foreground">hello@originwire.com</p>
-                    </div>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Phone className="h-5 w-5 text-purple-600" />
+                    <span className="text-gray-600 dark:text-gray-400">(513) 222-7589</span>
                   </div>
-
-                  <div className="flex items-start">
-                    <div className="mr-4 bg-gradient-to-br from-purple-600 to-blue-500 p-3 rounded-full">
-                      <Phone className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium">Phone</h4>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    </div>
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="h-5 w-5 text-purple-600" />
+                    <span className="text-gray-600 dark:text-gray-400">Anderson Township, Cincinnati, Ohio</span>
                   </div>
-
-                  <div className="flex items-start">
-                    <div className="mr-4 bg-gradient-to-br from-purple-600 to-blue-500 p-3 rounded-full">
-                      <MapPin className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium">Location</h4>
-                      <p className="text-muted-foreground">San Francisco, CA</p>
-                    </div>
+                  <div className="flex items-center space-x-3">
+                    <Mail className="h-5 w-5 text-purple-600" />
+                    <span className="text-gray-600 dark:text-gray-400">hello@originwire.com</span>
                   </div>
                 </div>
 

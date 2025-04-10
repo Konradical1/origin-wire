@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
@@ -48,9 +49,15 @@ const Navbar = () => {
         <div className="flex">
           <Link 
             href="/" 
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-3 group"
           >
-            <span className="text-xl font-bold transition-all duration-300 group-hover:text-primary group-hover:scale-105">OriginWire</span>
+            <Image
+              src="/favicon.svg"
+              alt="OriginWire Logo"
+              width={80}
+              height={32}
+              className="transition-all duration-300 group-hover:scale-105 [filter:invert(1)_brightness(100)] dark:[filter:invert(1)_brightness(100)]"
+            />
           </Link>
         </div>
         

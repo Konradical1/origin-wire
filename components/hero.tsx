@@ -16,12 +16,12 @@ const Hero = () => {
     <div className="relative">
       <div className="container flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-4 text-center">
         <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Wiring Your Business
             <span className="block text-primary">for the Digital Future</span>
           </h1>
-          <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            We create stunning websites and digital experiences that help businesses grow and succeed in the digital age.
+          <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 italic">
+            At OriginWire, we create stunning websites and digital experiences that help businesses grow and succeed in the digital age.
           </p>
         </div>
         <div className="flex flex-col gap-2 min-[400px]:flex-row">

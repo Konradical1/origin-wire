@@ -18,7 +18,7 @@ export default function About() {
               About OriginWire
             </h2>
 
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 italic">
               Founded by Konrad Fischer, OriginWire is a full-service digital media agency dedicated to helping
               businesses establish a powerful online presence and connect with their audience.
             </p>
@@ -26,7 +26,7 @@ export default function About() {
             <Card className="border-none bg-gradient-to-br from-background to-muted/50 mb-6">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">Our Mission</h3>
-                <p>
+                <p className="italic">
                   To create digital experiences that transform brands and drive meaningful connections between
                   businesses and their customers.
                 </p>
