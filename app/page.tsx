@@ -1,23 +1,21 @@
 import Hero from "@/components/hero"
 import Services from "@/components/services"
 import Portfolio from "@/components/portfolio"
-import Testimonials from "@/components/testimonials"
 import About from "@/components/about"
+import Testimonials from "@/components/testimonials"
 import Contact from "@/components/contact"
-import FAQ from "@/components/faq"
 import Stats from "@/components/stats"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div className="flex flex-col gap-20">
       <Hero />
       <Services />
       <Portfolio />
-      <Testimonials />
       <Stats />
+      <Testimonials />
       <About />
       <Contact />
-      <FAQ />
-    </main>
+    </div>
   )
 }

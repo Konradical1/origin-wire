@@ -2,135 +2,157 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-const categories = ["All", "Websites", "Graphic Design", "Social Media", "Booking Systems"]
 
 const projects = [
   {
-    id: 1,
-    title: "Luxury Resort Website",
-    summary: "Modern website with booking functionality for a high-end resort",
-    category: "Websites",
-    image: "/placeholder.svg?height=400&width=600",
+    title: "E-commerce Platform Redesign",
+    description: "Modern e-commerce platform with advanced filtering and search capabilities",
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Development",
+    link: "/portfolio/ecommerce-platform"
   },
   {
-    id: 2,
-    title: "Tech Startup Rebrand",
-    summary: "Complete visual identity redesign for an emerging tech company",
-    category: "Graphic Design",
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Mobile Banking App",
+    description: "Secure and intuitive mobile banking application with biometric authentication",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
+    category: "Mobile Development",
+    link: "/portfolio/mobile-banking"
   },
   {
-    id: 3,
-    title: "Restaurant Online Presence",
-    summary: "Website and social media strategy for a fine dining establishment",
-    category: "Social Media",
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Corporate Website",
+    description: "Responsive corporate website with integrated CMS and analytics",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Design",
+    link: "/portfolio/corporate-website"
   },
   {
-    id: 4,
-    title: "Fitness Studio Booking System",
-    summary: "Custom class scheduling and payment solution",
-    category: "Booking Systems",
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Healthcare Portal",
+    description: "Patient portal with appointment scheduling and medical records access",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000&auto=format&fit=crop",
+    category: "Healthcare",
+    link: "/portfolio/healthcare-portal"
   },
   {
-    id: 5,
-    title: "E-commerce Platform",
-    summary: "Full-featured online store with inventory management",
-    category: "Websites",
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Real Estate Platform",
+    description: "Property listing platform with virtual tours and advanced search",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
+    category: "Real Estate",
+    link: "/portfolio/real-estate"
   },
   {
-    id: 6,
-    title: "Corporate Social Campaign",
-    summary: "Multi-platform social media campaign for brand awareness",
-    category: "Social Media",
-    image: "/placeholder.svg?height=400&width=600",
-  },
+    title: "Educational Platform",
+    description: "Learning management system with interactive courses and assessments",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
+    category: "Education",
+    link: "/portfolio/educational-platform"
+  }
 ]
 
-export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState("All")
+const allTags = Array.from(new Set(projects.flatMap((project) => project.category)))
 
-  const filteredProjects =
-    activeCategory === "All" ? projects : projects.filter((project) => project.category === activeCategory)
+export default function Portfolio() {
+  const [selectedTag, setSelectedTag] = useState<string | null>(null)
+
+  const filteredProjects = selectedTag
+    ? projects.filter((project) => project.category === selectedTag)
+    : projects
 
   return (
-    <section id="portfolio" className="py-24 bg-muted/30">
+    <section id="portfolio" className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-3xl font-bold sm:text-4xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-3 sm:mb-4">
             Our Portfolio
           </h2>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our recent projects and see how we&apos;ve helped businesses transform their digital presence.
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Explore our latest projects and see how we've helped businesses transform their digital presence.
           </p>
         </motion.div>
 
-        <Tabs defaultValue="All" className="w-full">
-          <div className="flex justify-center mb-12">
-            <TabsList className="bg-background/50 backdrop-blur-sm">
-              {categories.map((category) => (
-                <TabsTrigger
-                  key={category}
-                  value={category}
-                  onClick={() => setActiveCategory(category)}
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white"
-                >
-                  {category}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </div>
+        {/* Mobile-friendly filter buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <Button
+            variant={selectedTag === null ? "default" : "outline"}
+            size="sm"
+            className="text-xs sm:text-sm"
+            onClick={() => setSelectedTag(null)}
+          >
+            All
+          </Button>
+          {allTags.map((tag) => (
+            <Button
+              key={tag}
+              variant={selectedTag === tag ? "default" : "outline"}
+              size="sm"
+              className="text-xs sm:text-sm"
+              onClick={() => setSelectedTag(tag)}
+            >
+              {tag}
+            </Button>
+          ))}
+        </div>
 
-          <TabsContent value={activeCategory} className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-card shadow-sm hover:shadow-md transition-shadow duration-300"
+            >
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  priority={index < 3}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="p-4 sm:p-6">
+                <span className="text-xs sm:text-sm font-medium text-purple-600 dark:text-purple-400">
+                  {project.category}
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold mt-1 sm:mt-2 mb-1 sm:mb-2">{project.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 line-clamp-2">
+                  {project.description}
+                </p>
+                <Link
+                  href={project.link}
+                  className="inline-flex items-center text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  <Card className="overflow-hidden border-none hover:shadow-xl transition-all duration-300 h-full bg-background">
-                    <div className="relative aspect-video overflow-hidden">
-                      <img
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                          <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                          <p className="text-gray-200 mt-2">{project.summary}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-bold">{project.title}</h3>
-                      <p className="text-muted-foreground mt-2">{project.summary}</p>
-                      <div className="mt-4">
-                        <Button variant="outline" size="sm">
-                          View Details
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+                  View Project
+                  <svg
+                    className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

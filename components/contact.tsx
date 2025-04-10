@@ -9,8 +9,11 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Contact() {
+  const { toast } = useToast()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,12 +26,14 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Handle form submission - would connect to a server action in a real implementation
-    console.log("Form submitted:", formData)
-    alert("Thanks for your message! We'll get back to you soon.")
-    setFormData({ name: "", email: "", phone: "", message: "" })
+    // Here you would typically handle the form submission
+    // For now, we'll just show a success toast
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you as soon as possible.",
+    })
   }
 
   return (

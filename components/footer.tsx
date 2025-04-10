@@ -1,136 +1,114 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 pt-16 pb-8">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <Link href="/" className="inline-block mb-6">
-              <span className="text-2xl font-bold text-white">ORIGINWIRE</span>
-            </Link>
-            <p className="text-gray-300 mb-6">
-              Creating digital experiences that transform brands and drive meaningful connections.
+    <footer className="border-t bg-background">
+      <div className="container py-16">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">OriginWire</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Creating exceptional digital experiences that drive business growth.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
+              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <Twitter className="h-4 w-4" />
+                  <span className="sr-only">Twitter</span>
+                </Button>
+              </Link>
+              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <Facebook className="h-4 w-4" />
+                  <span className="sr-only">Facebook</span>
+                </Button>
+              </Link>
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <Instagram className="h-4 w-4" />
+                  <span className="sr-only">Instagram</span>
+                </Button>
+              </Link>
+              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <Linkedin className="h-4 w-4" />
+                  <span className="sr-only">LinkedIn</span>
+                </Button>
+              </Link>
             </div>
           </div>
-
           <div>
-            <h3 className="text-lg font-bold text-white mb-6">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Website Creation
+                <Link href="/services" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Website Management
-                </Link>
-              </li>
-              <li>
-                <Link href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Graphic Design
-                </Link>
-              </li>
-              <li>
-                <Link href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Social Media Management
-                </Link>
-              </li>
-              <li>
-                <Link href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Booking Systems
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6">Company</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="#about" className="text-gray-300 hover:text-white transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="#portfolio" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/portfolio" className="text-gray-500 hover:text-primary dark:text-gray-400">
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="#testimonials" className="text-gray-300 hover:text-white transition-colors">
-                  Testimonials
+                <Link href="/about" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="#faq" className="text-gray-300 hover:text-white transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
+                <Link href="/contact" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  Contact
                 </Link>
               </li>
             </ul>
           </div>
-
           <div>
-            <h3 className="text-lg font-bold text-white mb-6">Newsletter</h3>
-            <p className="text-gray-300 mb-4">Subscribe to our newsletter for digital insights and tips.</p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="px-4 py-2 rounded-l-md w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
-              <Button className="rounded-l-none bg-gradient-to-r from-purple-600 to-pink-600">
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
+            <h3 className="mb-4 text-lg font-semibold">Services</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/services#web-development" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#ui-ux-design" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  UI/UX Design
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#mobile-development" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  Mobile Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#e-commerce" className="text-gray-500 hover:text-primary dark:text-gray-400">
+                  E-commerce Solutions
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Newsletter</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Subscribe to our newsletter for the latest updates and insights.
+            </p>
+            <form className="flex space-x-2" onSubmit={(e) => e.preventDefault()}>
+              <Input placeholder="Enter your email" type="email" />
+              <Button type="submit">Subscribe</Button>
+            </form>
           </div>
         </div>
-
-        <div className="border-t border-gray-700 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} OriginWire. All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Sitemap
-              </Link>
-            </div>
-          </div>
+        <div className="mt-16 border-t pt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+          <p>© {new Date().getFullYear()} OriginWire. All rights reserved.</p>
         </div>
       </div>
     </footer>
   )
 }
+
+export default Footer

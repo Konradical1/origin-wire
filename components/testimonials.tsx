@@ -4,165 +4,99 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Star } from "lucide-react"
 
 const testimonials = [
   {
-    id: 1,
     name: "Sarah Johnson",
-    company: "Elevate Fitness",
-    quote:
-      "OriginWire transformed our online presence. Our booking system is now seamless, and our website perfectly captures our brand essence. Highly recommend!",
-    image: "/placeholder.svg?height=100&width=100",
-    logo: "/placeholder.svg?height=50&width=100",
+    role: "CEO, TechStart Inc.",
+    content: "OriginWire transformed our online presence completely. Their attention to detail and innovative solutions helped us achieve our digital goals.",
+    image: "/placeholder-user.jpg",
+    rating: 5,
   },
   {
-    id: 2,
     name: "Michael Chen",
-    company: "TechNova Solutions",
-    quote:
-      "Working with Konrad and the OriginWire team was a game-changer for our startup. They delivered a website that exceeded our expectations and helped establish our brand identity.",
-    image: "/placeholder.svg?height=100&width=100",
-    logo: "/placeholder.svg?height=50&width=100",
+    role: "Founder, GrowthLabs",
+    content: "Working with OriginWire was a game-changer for our business. Their team delivered a beautiful, functional website that exceeded our expectations.",
+    image: "/placeholder-user.jpg",
+    rating: 5,
   },
   {
-    id: 3,
-    name: "Emma Rodriguez",
-    company: "Coastal Cuisine Restaurant",
-    quote:
-      "Our restaurant's online bookings increased by 45% after OriginWire redesigned our website and implemented their booking system. The ROI has been incredible.",
-    image: "/placeholder.svg?height=100&width=100",
-    logo: "/placeholder.svg?height=50&width=100",
+    name: "Emily Rodriguez",
+    role: "Marketing Director, FreshFoods",
+    content: "The e-commerce solution provided by OriginWire helped us increase our online sales by 200%. Their expertise and support were invaluable.",
+    image: "/placeholder-user.jpg",
+    rating: 5,
   },
   {
-    id: 4,
-    name: "David Thompson",
-    company: "Artisan Crafts",
-    quote:
-      "The e-commerce solution OriginWire built for us has streamlined our operations and significantly boosted our online sales. Their ongoing support is exceptional.",
-    image: "/placeholder.svg?height=100&width=100",
-    logo: "/placeholder.svg?height=50&width=100",
+    name: "David Kim",
+    role: "Owner, FitLife Gym",
+    content: "Our mobile app developed by OriginWire has received amazing feedback from our clients. It's intuitive, fast, and exactly what we needed.",
+    image: "/placeholder-user.jpg",
+    rating: 5,
   },
 ]
 
-export default function Testimonials() {
-  const [current, setCurrent] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
-  const [width, setWidth] = useState(0)
-
-  useEffect(() => {
-    setWidth(window.innerWidth)
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  useEffect(() => {
-    if (!autoplay) return
-
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [autoplay])
-
-  const visibleTestimonials = () => {
-    if (width >= 1024) return 3 // Large screens
-    if (width >= 768) return 2 // Medium screens
-    return 1 // Small screens
-  }
-
-  const next = () => {
-    setCurrent((prev) => (prev === testimonials.length - visibleTestimonials() ? 0 : prev + 1))
-    setAutoplay(false)
-  }
-
-  const prev = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - visibleTestimonials() : prev - 1))
-    setAutoplay(false)
-  }
-
+const Testimonials = () => {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+    <section className="container py-24" id="testimonials">
+      <div className="flex flex-col items-center justify-center text-center">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          What Our Clients Say
+        </h2>
+        <p className="mx-auto mt-4 max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+          Don't just take our word for it - hear from some of our satisfied clients
+        </p>
+      </div>
+
+      <div className="mx-auto mt-16 max-w-5xl">
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
         >
-          <h2 className="text-3xl font-bold sm:text-4xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-            Client Testimonials
-          </h2>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${current * (100 / visibleTestimonials())}%)` }}
-            >
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className={`px-4 ${
-                    visibleTestimonials() === 3 ? "w-1/3" : visibleTestimonials() === 2 ? "w-1/2" : "w-full"
-                  } flex-shrink-0`}
-                >
-                  <Card className="h-full border-none bg-gradient-to-br from-background to-muted/50 hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-8">
-                      <div className="flex items-center mb-6">
-                        <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                          <img
-                            src={testimonial.image || "/placeholder.svg"}
-                            alt={testimonial.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="font-bold">{testimonial.name}</h4>
-                          <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                        </div>
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <Card>
+                  <CardContent className="flex flex-col gap-4 p-6">
+                    <div className="flex items-center gap-4">
+                      <Avatar>
+                        <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                        <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
                       </div>
-                      <div className="mb-6">
-                        <Quote className="h-8 w-8 text-purple-500/30" />
-                      </div>
-                      <p className="text-muted-foreground">{testimonial.quote}</p>
-                      <div className="mt-6 h-8">
-                        <img
-                          src={testimonial.logo || "/placeholder.svg"}
-                          alt={`${testimonial.company} logo`}
-                          className="h-full object-contain"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background rounded-full p-2 shadow-lg hover:bg-muted transition-colors duration-200"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background rounded-full p-2 shadow-lg hover:bg-muted transition-colors duration-200"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-        </div>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                      ))}
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">{testimonial.content}</p>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
       </div>
     </section>
   )
 }
+
+export default Testimonials
