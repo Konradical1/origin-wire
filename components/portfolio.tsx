@@ -8,56 +8,62 @@ import { Button } from "@/components/ui/button"
 
 const projects = [
   {
-    title: "E-commerce Platform Redesign",
-    description: "Modern e-commerce platform with advanced filtering and search capabilities",
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1000&auto=format&fit=crop",
+    title: "Mullins-Taylor Group",
+    description: "Custom-built website and digital marketing package for a local financial advisor to establish trust, improve accessibility, and showcase services clearly.",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000&auto=format&fit=crop",
     category: "Web Development",
-    link: "/portfolio/ecommerce-platform"
+    secondaryCategory: "Digital Marketing",
+    link: "/portfolio/mullins-taylor-group"
   },
   {
-    title: "Mobile Banking App",
-    description: "Secure and intuitive mobile banking application with biometric authentication",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
-    category: "Mobile Development",
-    link: "/portfolio/mobile-banking"
+    title: "ErinConoverMurray.com",
+    description: "Elegant and modern website redesign for a Cincinnati-based interior designer, optimized for mobile and portfolio presentation.",
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Development",
+    link: "/portfolio/erinconovermurray"
   },
   {
-    title: "Corporate Website",
-    description: "Responsive corporate website with integrated CMS and analytics",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Design",
-    link: "/portfolio/corporate-website"
+    title: "Excelerate Athletic Training",
+    description: "Website and branding package for a personal training brand, focused on clear service offerings and lead generation.",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Development",
+    secondaryCategory: "Digital Marketing",
+    link: "/portfolio/excelerate-athletic"
   },
   {
-    title: "Healthcare Portal",
-    description: "Patient portal with appointment scheduling and medical records access",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000&auto=format&fit=crop",
-    category: "Healthcare",
-    link: "/portfolio/healthcare-portal"
+    title: "Photography by Lauren Olson",
+    description: "Minimalist photography portfolio showcasing creative work with an intuitive layout and contact options.",
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Development",
+    link: "/portfolio/lauren-olson"
   },
   {
-    title: "Real Estate Platform",
-    description: "Property listing platform with virtual tours and advanced search",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
-    category: "Real Estate",
-    link: "/portfolio/real-estate"
+    title: "Eagle Creek Custom Builders",
+    description: "Full website design for a custom home building company, featuring project galleries, testimonials, and service breakdowns.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Development",
+    link: "/portfolio/eagle-creek"
   },
   {
-    title: "Educational Platform",
-    description: "Learning management system with interactive courses and assessments",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
-    category: "Education",
-    link: "/portfolio/educational-platform"
+    title: "GH Cardetailing",
+    description: "Created a website handling booking and advertising for a premium auto detailing service, featuring online scheduling and service showcase.",
+    image: "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Development",
+    secondaryCategory: "Digital Marketing",
+    link: "/portfolio/gh-cardetailing"
   }
 ]
 
-const allTags = Array.from(new Set(projects.flatMap((project) => project.category)))
+const allTags = ["Web Development", "Digital Marketing"]
 
 export default function Portfolio() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
   const filteredProjects = selectedTag
-    ? projects.filter((project) => project.category === selectedTag)
+    ? projects.filter((project) => 
+        project.category === selectedTag || 
+        project.secondaryCategory === selectedTag
+      )
     : projects
 
   return (
@@ -123,9 +129,16 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-4 sm:p-6">
-                <span className="text-xs sm:text-sm font-medium text-purple-600 dark:text-purple-400">
-                  {project.category}
-                </span>
+                <div className="flex flex-wrap gap-1 mb-1">
+                  <span className="text-xs sm:text-sm font-medium text-purple-600 dark:text-purple-400">
+                    {project.category}
+                  </span>
+                  {project.secondaryCategory && (
+                    <span className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400">
+                      • {project.secondaryCategory}
+                    </span>
+                  )}
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold mt-1 sm:mt-2 mb-1 sm:mb-2">{project.title}</h3>
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 line-clamp-2">
                   {project.description}

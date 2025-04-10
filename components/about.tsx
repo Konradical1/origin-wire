@@ -7,30 +7,10 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden">
-                <img
-                  src="/placeholder.svg?height=600&width=600"
-                  alt="Konrad Fischer, Founder of OriginWire"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-purple-600 to-blue-500 p-6 rounded-2xl shadow-xl">
-                <p className="text-white font-bold">10+ Years Experience</p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >

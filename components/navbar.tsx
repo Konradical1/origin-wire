@@ -40,14 +40,17 @@ const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 ${
+      className={`sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${
         isScrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold">OriginWire</span>
+          <Link 
+            href="/" 
+            className="flex items-center space-x-2 group"
+          >
+            <span className="text-xl font-bold transition-all duration-300 group-hover:text-primary group-hover:scale-105">OriginWire</span>
           </Link>
         </div>
         
@@ -58,28 +61,38 @@ const Navbar = () => {
               <Link 
                 key={item.name} 
                 href={item.href} 
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-sm font-medium transition-all duration-300 hover:text-primary relative ${
                   pathname === item.href ? "text-primary" : "text-foreground/70"
                 }`}
               >
                 {item.name}
+                <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ${
+                  pathname === item.href ? "w-full" : "group-hover:w-full"
+                }`}></span>
               </Link>
             ))}
           </nav>
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            <Button asChild>
-              <Link href="/contact">Book a Call</Link>
+            <div className="hover:scale-110 transition-transform duration-300">
+              <ThemeToggle />
+            </div>
+            <Button 
+              asChild
+              className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
+            >
+              <Link href="/book">Book a Call</Link>
             </Button>
           </div>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center space-x-4">
-          <ThemeToggle />
+          <div className="hover:scale-110 transition-transform duration-300">
+            <ThemeToggle />
+          </div>
           <button
             type="button"
-            className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+            className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300 hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
@@ -107,10 +120,10 @@ const Navbar = () => {
             <Link
               key={item.name}
               href={item.href}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 pathname === item.href 
                   ? "bg-accent text-accent-foreground" 
-                  : "text-foreground/70 hover:bg-accent hover:text-accent-foreground"
+                  : "text-foreground/70 hover:bg-accent hover:text-accent-foreground hover:translate-x-1"
               }`}
             >
               {item.name}
@@ -119,9 +132,9 @@ const Navbar = () => {
           <div className="px-3 py-2">
             <Button
               asChild
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-0.5"
             >
-              <Link href="/contact">Book a Call</Link>
+              <Link href="/book">Book a Call</Link>
             </Button>
           </div>
         </div>

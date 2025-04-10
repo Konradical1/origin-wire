@@ -1,124 +1,105 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code2, Paintbrush, Rocket, Search, ShoppingCart, Smartphone } from "lucide-react"
-import Link from "next/link"
+"use client"
 
-const servicesData = [
+import { motion } from "framer-motion"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { 
+  Code2, 
+  BarChart3, 
+  Palette, 
+  PenTool, 
+  LineChart, 
+  Puzzle 
+} from "lucide-react"
+
+const services = [
   {
-    title: "Web Development",
-    description: "Custom websites built with modern technologies and best practices",
-    icon: Code2,
-    features: [
-      "Custom website development",
-      "Progressive Web Apps (PWA)",
-      "Web application development",
-      "API integration",
-      "Content Management Systems",
-      "Website maintenance and support",
-    ],
+    title: "Web Design & Development",
+    description: "Custom websites built with modern technologies, responsive design, and optimal user experience.",
+    icon: Code2
   },
   {
-    title: "UI/UX Design",
-    description: "Beautiful and intuitive user interfaces that engage visitors",
-    icon: Paintbrush,
-    features: [
-      "User Interface Design",
-      "User Experience Design",
-      "Wireframing and Prototyping",
-      "Design Systems",
-      "Mobile App Design",
-      "Responsive Design",
-    ],
+    title: "Digital Marketing",
+    description: "Strategic marketing solutions to increase your online presence and drive business growth.",
+    icon: BarChart3
   },
   {
-    title: "E-commerce Solutions",
-    description: "Powerful online stores that drive sales and growth",
-    icon: ShoppingCart,
-    features: [
-      "Custom e-commerce development",
-      "Shopping cart integration",
-      "Payment gateway integration",
-      "Inventory management",
-      "Order processing systems",
-      "Analytics and reporting",
-    ],
+    title: "Graphic Design",
+    description: "Professional visual designs that capture your brand's essence and engage your audience.",
+    icon: Palette
   },
   {
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile applications",
-    icon: Smartphone,
-    features: [
-      "iOS app development",
-      "Android app development",
-      "Cross-platform development",
-      "Mobile app testing",
-      "App store optimization",
-      "App maintenance and updates",
-    ],
+    title: "Content Creation",
+    description: "Engaging content that tells your story and connects with your target audience.",
+    icon: PenTool
   },
   {
-    title: "SEO Optimization",
-    description: "Improve your visibility and reach in search engines",
-    icon: Search,
-    features: [
-      "Technical SEO",
-      "On-page optimization",
-      "Content strategy",
-      "Keyword research",
-      "Performance optimization",
-      "SEO reporting and analytics",
-    ],
+    title: "Analytics",
+    description: "Data-driven insights to optimize your digital strategy and improve performance.",
+    icon: LineChart
   },
   {
-    title: "Performance Optimization",
-    description: "Fast-loading websites that provide the best user experience",
-    icon: Rocket,
-    features: [
-      "Website speed optimization",
-      "Core Web Vitals improvement",
-      "Caching implementation",
-      "Image optimization",
-      "Code minification",
-      "Server optimization",
-    ],
-  },
+    title: "Custom Solutions",
+    description: "Tailored digital solutions to meet your specific business needs and challenges.",
+    icon: Puzzle
+  }
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="container py-24">
-      <div className="flex flex-col items-center justify-center text-center">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+    <main className="container py-24">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col items-center justify-center text-center mb-16"
+      >
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl mb-6">
           Our Services
         </h1>
-        <p className="mx-auto mt-4 max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-          We offer a comprehensive range of digital services to help your business succeed online
+        <p className="mx-auto max-w-[800px] text-gray-500 md:text-xl dark:text-gray-400">
+          We offer a comprehensive range of digital services to help your business succeed online. Our team of experts is ready to bring your vision to life.
         </p>
-      </div>
+      </motion.div>
 
       <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {servicesData.map((service, index) => (
-          <Card key={index} className="relative overflow-hidden" id={service.title.toLowerCase().replace(/\s+/g, "-")}>
-            <CardHeader>
-              <div className="mb-4 inline-block rounded-lg bg-primary/10 p-3">
-                <service.icon className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>{service.title}</CardTitle>
-              <CardDescription>{service.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-inside list-disc space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex}>{feature}</li>
-                ))}
-              </ul>
-              <Button asChild className="mt-6 w-full">
-                <Link href="/contact">Get Started</Link>
-              </Button>
-            </CardContent>
-          </Card>
+        {services.map((service, index) => (
+          <motion.div
+            key={service.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+          >
+            <Card className="relative overflow-hidden h-full">
+              <CardHeader>
+                <div className="mb-4 inline-block rounded-lg bg-primary/10 p-3">
+                  <service.icon className="h-6 w-6 text-primary" />
+                </div>
+                <CardTitle>{service.title}</CardTitle>
+                <CardDescription>{service.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2 transform">
+                  <div className="h-24 w-24 rounded-full bg-primary/10" />
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
-    </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="mt-24 text-center"
+      >
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4">
+          Ready to Get Started?
+        </h2>
+        <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+          Contact us today to discuss how we can help your business thrive in the digital world.
+        </p>
+      </motion.div>
+    </main>
   )
 } 

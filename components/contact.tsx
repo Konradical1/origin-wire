@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import Link from "next/link"
 
 export default function Contact() {
   const { toast } = useToast()
@@ -102,8 +103,8 @@ export default function Contact() {
                   <p className="text-muted-foreground mb-4">
                     Prefer to talk directly? Schedule a 30-minute consultation call.
                   </p>
-                  <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white">
-                    Book a Call
+                  <Button asChild className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white">
+                    <Link href="/book">Book a Call</Link>
                   </Button>
                 </div>
               </CardContent>

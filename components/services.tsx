@@ -3,40 +3,47 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code2, Paintbrush, Rocket, Search, ShoppingCart, Smartphone } from "lucide-react"
+import { 
+  Code2, 
+  BarChart3, 
+  Palette, 
+  PenTool, 
+  LineChart, 
+  Puzzle 
+} from "lucide-react"
 import Link from "next/link"
 
 const services = [
   {
-    title: "Web Development",
-    description: "Custom websites built with modern technologies and best practices",
-    icon: Code2,
+    title: "Web Design & Development",
+    description: "Custom websites built with modern technologies, responsive design, and optimal user experience.",
+    icon: Code2
   },
   {
-    title: "UI/UX Design",
-    description: "Beautiful and intuitive user interfaces that engage visitors",
-    icon: Paintbrush,
+    title: "Digital Marketing",
+    description: "Strategic marketing solutions to increase your online presence and drive business growth.",
+    icon: BarChart3
   },
   {
-    title: "E-commerce Solutions",
-    description: "Powerful online stores that drive sales and growth",
-    icon: ShoppingCart,
+    title: "Graphic Design",
+    description: "Professional visual designs that capture your brand's essence and engage your audience.",
+    icon: Palette
   },
   {
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile applications",
-    icon: Smartphone,
+    title: "Content Creation",
+    description: "Engaging content that tells your story and connects with your target audience.",
+    icon: PenTool
   },
   {
-    title: "SEO Optimization",
-    description: "Improve your visibility and reach in search engines",
-    icon: Search,
+    title: "Analytics",
+    description: "Data-driven insights to optimize your digital strategy and improve performance.",
+    icon: LineChart
   },
   {
-    title: "Performance Optimization",
-    description: "Fast-loading websites that provide the best user experience",
-    icon: Rocket,
-  },
+    title: "Custom Solutions",
+    description: "Tailored digital solutions to meet your specific business needs and challenges.",
+    icon: Puzzle
+  }
 ]
 
 const Services = () => {
