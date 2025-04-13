@@ -57,20 +57,37 @@ const Services = () => {
       </div>
       <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
-          <Card key={index} className="relative overflow-hidden">
-            <CardHeader>
-              <div className="mb-4 inline-block rounded-lg bg-primary/10 p-3">
-                <service.icon className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>{service.title}</CardTitle>
-              <CardDescription>{service.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2 transform">
-                <div className="h-24 w-24 rounded-full bg-primary/10" />
-              </div>
-            </CardContent>
-          </Card>
+          <motion.div
+            key={index}
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Card className="relative overflow-hidden cursor-pointer transition-shadow hover:shadow-lg">
+              <CardHeader>
+                <motion.div 
+                  className="mb-4 inline-block rounded-lg bg-primary/10 p-3"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <service.icon className="h-6 w-6 text-primary" />
+                </motion.div>
+                <CardTitle>{service.title}</CardTitle>
+                <CardDescription>{service.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <motion.div 
+                  className="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2 transform"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="h-24 w-24 rounded-full bg-primary/10" />
+                </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </section>

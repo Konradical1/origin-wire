@@ -1,7 +1,7 @@
 import Hero from "@/components/hero"
 import Services from "@/components/services"
 import Portfolio from "@/components/portfolio"
-import Testimonials from "@/components/testimonials"
+// import Testimonials from "@/components/testimonials"
 import Contact from "@/components/contact"
 import Stats from "@/components/stats"
 
@@ -12,7 +12,7 @@ export default function Home() {
       <Services />
       <Portfolio />
       <Stats />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Contact />
     </div>
   )

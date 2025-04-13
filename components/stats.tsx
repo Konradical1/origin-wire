@@ -5,8 +5,8 @@ import { Code2, Clock, Sparkles } from "lucide-react"
 
 const stats = [
   {
-    value: "24/7",
-    label: "Support Available",
+    value: "Continuous",
+    label: "Support",
     icon: Clock,
   },
   {
@@ -37,13 +37,35 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center"
+              whileHover={{ 
+                scale: 1.05,
+                transition: { duration: 0.2 }
+              }}
+              className="text-center cursor-pointer"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4">
+              <motion.div 
+                className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4"
+                whileHover={{ 
+                  scale: 1.1,
+                  transition: { duration: 0.2 }
+                }}
+              >
                 <stat.icon className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-4xl font-bold text-white mb-2">{stat.value}</h3>
-              <p className="text-gray-300">{stat.label}</p>
+              </motion.div>
+              <motion.h3 
+                className="text-4xl font-bold text-white mb-2"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
+              >
+                {stat.value}
+              </motion.h3>
+              <motion.p 
+                className="text-gray-300"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                {stat.label}
+              </motion.p>
             </motion.div>
           ))}
         </div>
