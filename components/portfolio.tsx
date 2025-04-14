@@ -8,52 +8,36 @@ import { Button } from "@/components/ui/button"
 
 const projects = [
   {
-    title: "Mullins-Taylor Group",
-    description: "Custom-built website and digital marketing package for a local financial advisor to establish trust, improve accessibility, and showcase services clearly.",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Design",
-    secondaryCategory: "Digital Marketing",
-    link: "/portfolio/mullins-taylor-group"
-  },
-  {
-    title: "ErinConoverMurray.com",
-    description: "Elegant and modern website redesign for a Cincinnati-based interior designer, optimized for mobile and portfolio presentation.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Design",
-    secondaryCategory: "Graphic Design",
-    link: "/portfolio/erinconovermurray"
-  },
-  {
-    title: "Excelerate Athletic Training",
-    description: "Website and branding package for a personal training brand, focused on clear service offerings and lead generation.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Design",
-    secondaryCategory: "Content Creation",
-    link: "/portfolio/excelerate-athletic"
-  },
-  {
-    title: "Photography by Lauren Olson",
-    description: "Minimalist photography portfolio showcasing creative work with an intuitive layout and contact options.",
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop",
-    category: "Graphic Design",
-    secondaryCategory: "Content Creation",
-    link: "/portfolio/lauren-olson"
-  },
-  {
-    title: "Eagle Creek Custom Builders",
-    description: "Full website design for a custom home building company, featuring project galleries, testimonials, and service breakdowns.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
-    category: "Web Design",
-    secondaryCategory: "Analytics",
-    link: "/portfolio/eagle-creek"
-  },
-  {
     title: "GH Cardetailing",
     description: "Created a website handling booking and advertising for a premium auto detailing service, featuring online scheduling and service showcase.",
     image: "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1000&auto=format&fit=crop",
     category: "Custom Solutions",
     secondaryCategory: "Digital Marketing",
     link: "/portfolio/gh-cardetailing"
+  },
+  {
+    title: "Peaceful Path Massage",
+    description: "Developed a comprehensive web presence for a massage therapy business, including content creation, web design, and graphic design elements.",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Design",
+    secondaryCategory: "Content Creation",
+    link: "/portfolio/peaceful-path-massage"
+  },
+  {
+    title: "Jewels and Jigsaws",
+    description: "Built an online storefront for a puzzle and retail business, implementing e-commerce solutions and engaging web design.",
+    image: "https://images.unsplash.com/photo-1611329857570-f02f340e7378?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Web Design",
+    secondaryCategory: "Custom Solutions",
+    link: "/portfolio/jewels-and-jigsaws"
+  },
+  {
+    title: "IEC Studios",
+    description: "Created a dynamic web presence for a game development company, featuring custom solutions and digital marketing strategies.",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop",
+    category: "Web Design",
+    secondaryCategory: "Digital Marketing",
+    link: "/portfolio/iec-studios"
   }
 ]
 
