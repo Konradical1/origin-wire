@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
+import { cn } from "@/lib/utils"
+import GoogleAnalytics from "@/components/google-analytics"
 
 const manrope = Manrope({ 
   subsets: ["latin"],
@@ -33,20 +35,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} font-sans`}>
+      <head>
+        <GoogleAnalytics />
+      </head>
+      <body className={cn(
+        "min-h-screen bg-background font-sans antialiased",
+        manrope.variable
+      )}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>

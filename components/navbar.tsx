@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { useTheme } from "next-themes"
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -19,7 +20,13 @@ const navItems = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const { theme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +63,9 @@ const Navbar = () => {
               alt="OriginWire Logo"
               width={80}
               height={32}
-              className="transition-all duration-300 group-hover:scale-105 [filter:invert(1)_brightness(100)] dark:[filter:invert(1)_brightness(100)]"
+              className={`transition-all duration-300 group-hover:scale-105 ${
+                mounted && theme === 'dark' ? '[filter:invert(1)_brightness(100)]' : '[filter:invert(0)_brightness(0)]'
+              }`}
             />
           </Link>
         </div>
