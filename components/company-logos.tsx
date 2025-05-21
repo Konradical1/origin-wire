@@ -9,21 +9,44 @@ const logoFiles = [
   "IEC.png",
   "PrecisionDetailing.png",
   "GH.png",
+  "Elevate-01.png",
 ]
 
 const CompanyLogos = () => {
   return (
     <div className="w-full overflow-hidden bg-muted/50 py-8">
       <div className="relative w-full">
-        <div
-          className="flex animate-scroll items-center gap-8"
-          style={{ width: 'max-content' }}
-        >
-          {logoFiles.concat(logoFiles).map((file, idx) => (
-            <div key={idx} className="flex-shrink-0">
+        <div className="flex animate-scroll items-center gap-8">
+          {/* First set of logos */}
+          {logoFiles.map((file, idx) => (
+            <div key={`first-${idx}`} className="flex-shrink-0">
               <Image
                 src={`/images/${file}`}
-                alt={`Company logo ${idx % logoFiles.length + 1}`}
+                alt={`Company logo ${idx + 1}`}
+                width={200}
+                height={100}
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+          ))}
+          {/* Second set of logos */}
+          {logoFiles.map((file, idx) => (
+            <div key={`second-${idx}`} className="flex-shrink-0">
+              <Image
+                src={`/images/${file}`}
+                alt={`Company logo ${idx + 1}`}
+                width={200}
+                height={100}
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+          ))}
+          {/* Third set of logos */}
+          {logoFiles.map((file, idx) => (
+            <div key={`third-${idx}`} className="flex-shrink-0">
+              <Image
+                src={`/images/${file}`}
+                alt={`Company logo ${idx + 1}`}
                 width={200}
                 height={100}
                 className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"

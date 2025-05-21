@@ -50,9 +50,9 @@ const Services = () => {
   return (
     <section className="container py-24" id="services">
       <div className="flex flex-col items-center justify-center text-center">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Services</h2>
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What We Do</h2>
         <p className="mx-auto mt-4 max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 italic">
-          At OriginWire, we offer a comprehensive range of digital services to help your business succeed online
+          Discover how we can help transform your business with our comprehensive range of digital solutions
         </p>
       </div>
       <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
