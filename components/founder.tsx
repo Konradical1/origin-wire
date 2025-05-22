@@ -1,6 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Founder() {
   return (
@@ -19,15 +21,41 @@ export default function Founder() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-2xl" />
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-2xl"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.8, 0.5],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 0 rgba(147, 51, 234, 0.4)",
+                      "0 0 0 20px rgba(147, 51, 234, 0)",
+                      "0 0 0 0 rgba(147, 51, 234, 0.4)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
                 <img
                   src="/images/Konrad.jpg"
                   alt="Konrad Fischer"
-                  className="w-48 h-48 rounded-full object-cover relative z-10 border-4 border-background shadow-xl"
+                  className="w-64 h-64 rounded-full object-cover relative z-10 border-4 border-background shadow-xl transition-all duration-300 group-hover:rotate-3 group-hover:border-purple-500/50"
                 />
               </motion.div>
             </div>
@@ -66,6 +94,19 @@ export default function Founder() {
                     🎮  Games For Change Finalist
                   </span>
                 </div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="pt-4"
+                >
+                  <Button asChild variant="outline" className="group">
+                    <Link href="/about">
+                      About Us
+                      <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
+                  </Button>
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
