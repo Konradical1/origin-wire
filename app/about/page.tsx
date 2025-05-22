@@ -6,12 +6,6 @@ import { Code2, Palette, Users, Server, User, Lightbulb, Target, Rocket, Heart, 
 
 const team = [
   {
-    name: "Konrad Fischer",
-    role: "Founder & Lead Developer",
-    description: "Leading the technical vision and development of OriginWire, ensuring high-quality code and innovative solutions.",
-    icon: Code2
-  },
-  {
     name: "Lucy Redman",
     role: "Creative Director & Photographer",
     description: "Crafting visually stunning designs and capturing the essence of our clients' brands through photography.",
@@ -73,19 +67,98 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="container py-24">
-      {/* Mission Section */}
+      {/* Konrad's Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center justify-center text-center mb-24"
+        className="flex flex-col lg:flex-row items-center gap-12 mb-24"
       >
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl mb-6">
-          Our Mission
-        </h1>
-        <p className="mx-auto max-w-[800px] text-gray-500 md:text-xl dark:text-gray-400">
-          At OriginWire, we're committed to delivering exceptional digital solutions that help businesses thrive in the modern world. Our team combines technical expertise with creative innovation to create websites and digital experiences that make a lasting impact.
-        </p>
+        {/* Left side - Image */}
+        <div className="lg:w-1/3 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            className="relative group"
+          >
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-2xl"
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.5, 0.8, 0.5],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              animate={{
+                boxShadow: [
+                  "0 0 0 0 rgba(147, 51, 234, 0.4)",
+                  "0 0 0 20px rgba(147, 51, 234, 0)",
+                  "0 0 0 0 rgba(147, 51, 234, 0.4)"
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <img
+              src="/images/Konrad.jpg"
+              alt="Konrad Fischer"
+              className="w-96 h-96 rounded-full object-cover relative z-10 border-4 border-background shadow-xl transition-transform duration-300 group-hover:rotate-3"
+            />
+          </motion.div>
+        </div>
+
+        {/* Right side - Content */}
+        <div className="lg:w-2/3 text-left">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-6"
+          >
+            <div>
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl mb-3 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                Konrad Fischer
+              </h1>
+              <p className="text-xl font-semibold mb-1">Founder & Lead Developer</p>
+              <p className="text-lg text-muted-foreground">Age 16 | Web Designer, Videographer, Photographer</p>
+            </div>
+
+            <div className="space-y-3">
+              <p className="flex items-center text-lg">
+                <span className="mr-2">🎥</span>
+                Quill & Scroll National Award (Videography)
+              </p>
+              <p className="flex items-center text-lg">
+                <span className="mr-2">🎮</span>
+                Games For Change Finalist (2025)
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="text-xl italic">
+                Creative work that speaks louder than my age.
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Web design. Visual media. Always original.
+              </p>
+            </div>
+
+            <p className="text-gray-500 md:text-lg dark:text-gray-400">
+              At OriginWire, we're committed to delivering exceptional digital solutions that help businesses thrive in the modern world. Our team combines technical expertise with creative innovation to create websites and digital experiences that make a lasting impact.
+            </p>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Values Section */}
@@ -139,7 +212,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member, index) => (
             <motion.div
               key={member.name}

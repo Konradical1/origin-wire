@@ -14,6 +14,37 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <div className="flex flex-col items-center mb-12">
+              <img
+                src="/images/Konrad.jpg"
+                alt="Konrad Fischer"
+                className="w-48 h-48 rounded-full object-cover mb-6"
+              />
+              <h2 className="text-3xl font-bold sm:text-4xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-2">
+                Konrad Fischer
+              </h2>
+              <p className="text-lg font-semibold mb-1">Founder, Origin Wire</p>
+              <p className="text-muted-foreground mb-4">Age 16 | Web Designer, Videographer, Photographer</p>
+              
+              <div className="flex flex-col items-center space-y-2 mb-6">
+                <p className="flex items-center">
+                  <span className="mr-2">🎥</span>
+                  Quill & Scroll National Award (Videography)
+                </p>
+                <p className="flex items-center">
+                  <span className="mr-2">🎮</span>
+                  Games For Change Finalist (2025)
+                </p>
+              </div>
+
+              <p className="text-lg italic text-center mb-2">
+                I build experiences that connect — through pixels, light, and story.
+              </p>
+              <p className="text-muted-foreground text-center">
+                Web design. Visual media. Always original.
+              </p>
+            </div>
+
             <h2 className="text-3xl font-bold sm:text-4xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-6">
               About OriginWire
             </h2>

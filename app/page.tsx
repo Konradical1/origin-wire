@@ -5,13 +5,15 @@ import Portfolio from "@/components/portfolio"
 import Contact from "@/components/contact"
 import Stats from "@/components/stats"
 import CompanyLogos from "@/components/company-logos"
+import Founder from "@/components/founder"
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-0">
       <Hero />
       <CompanyLogos />
       <Services />
+      <Founder />
       <Portfolio />
       <Stats />
       {/* <Testimonials /> */}
