@@ -58,7 +58,7 @@ const Navbar = () => {
               alt="OriginWire Logo"
               width={80}
               height={32}
-              className="transition-all duration-300 group-hover:scale-105"
+              className="transition-all duration-300 group-hover:scale-105 filter invert"
             />
           </Link>
         </div>
