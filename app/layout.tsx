@@ -26,6 +26,25 @@ export const metadata: Metadata = {
       }
     ],
   },
+  openGraph: {
+    images: [
+      {
+        url: "/images/MainWebImage.png",
+        width: 1152,
+        height: 768,
+        alt: "OriginWire Web Design Illustration"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: "/images/MainWebImage.png",
+        alt: "OriginWire Web Design Illustration"
+      }
+    ]
+  }
 }
 
 export default function RootLayout({

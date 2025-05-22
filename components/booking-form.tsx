@@ -10,8 +10,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { CalendarIcon, Clock, Mail, Phone, User } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function BookingForm() {
+  const { toast } = useToast()
   const [date, setDate] = useState<Date | undefined>(undefined)
   const [time, setTime] = useState<string>("")
   const [name, setName] = useState("")
@@ -30,24 +32,67 @@ export default function BookingForm() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission (replace with your actual API call)
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
+    if (!date) {
+      toast({
+        title: "Error",
+        description: "Please select a date for your booking.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          date: format(date, 'yyyy-MM-dd'),
+          time,
+          message,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to send booking request');
+      }
+
+      toast({
+        title: "Booking Request Sent!",
+        description: "We'll confirm your appointment shortly.",
+        className: "bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400",
+      });
+
+      setIsSubmitted(true);
       
       // Reset form
-      setDate(undefined)
-      setTime("")
-      setName("")
-      setEmail("")
-      setPhone("")
-      setMessage("")
+      setDate(undefined);
+      setTime("");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
       
       // Reset success message after 5 seconds
       setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
-    }, 1500)
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to send booking request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -176,7 +221,14 @@ export default function BookingForm() {
         </div>
         
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Scheduling..." : "Book Your Call"}
+          {isSubmitting ? (
+            <>
+              <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+              Scheduling...
+            </>
+          ) : (
+            "Book Your Call"
+          )}
         </Button>
         
         {isSubmitted && (

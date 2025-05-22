@@ -6,13 +6,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { useTheme } from "next-themes"
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ]
@@ -22,7 +18,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
-  const { theme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -63,9 +58,7 @@ const Navbar = () => {
               alt="OriginWire Logo"
               width={80}
               height={32}
-              className={`transition-all duration-300 group-hover:scale-105 ${
-                mounted && theme === 'dark' ? '[filter:invert(1)_brightness(100)]' : '[filter:invert(0)_brightness(0)]'
-              }`}
+              className="transition-all duration-300 group-hover:scale-105"
             />
           </Link>
         </div>
@@ -89,9 +82,6 @@ const Navbar = () => {
             ))}
           </nav>
           <div className="flex items-center space-x-4">
-            <div className="hover:scale-110 transition-transform duration-300">
-              <ThemeToggle />
-            </div>
             <Button 
               asChild
               className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
@@ -103,9 +93,6 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center space-x-4">
-          <div className="hover:scale-110 transition-transform duration-300">
-            <ThemeToggle />
-          </div>
           <button
             type="button"
             className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300 hover:scale-110"

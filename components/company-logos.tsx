@@ -4,12 +4,13 @@ import Image from "next/image"
 
 const logoFiles = [
   "Pathmassge.png",
-  "Jandj.png",
+  "JewelsandJigsaws.png",
   "Buzzwash.png",
   "IEC.png",
   "PrecisionDetailing.png",
   "GH.png",
   "Elevate-01.png",
+  "JC.png",
 ]
 
 const CompanyLogos = () => {

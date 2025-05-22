@@ -2,14 +2,13 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 
 const Footer = () => {
   return (
     <footer className="border-t bg-background">
       <div className="container py-16">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">OriginWire</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -28,7 +27,7 @@ const Footer = () => {
                   <span className="sr-only">Facebook</span>
                 </Button>
               </Link>
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.instagram.com/originwiredevelopment/" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon">
                   <Instagram className="h-4 w-4" />
                   <span className="sr-only">Instagram</span>
@@ -103,16 +102,6 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Newsletter</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Subscribe to our newsletter for the latest updates and insights.
-            </p>
-            <form className="flex space-x-2" onSubmit={(e) => e.preventDefault()}>
-              <Input placeholder="Enter your email" type="email" />
-              <Button type="submit">Subscribe</Button>
-            </form>
           </div>
         </div>
         <div className="mt-16 border-t pt-8 text-center text-sm text-gray-500 dark:text-gray-400">
