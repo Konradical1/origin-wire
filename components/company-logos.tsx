@@ -16,6 +16,11 @@ const logoFiles = [
 const CompanyLogos = () => {
   return (
     <div className="w-full overflow-hidden bg-muted/50 py-8">
+      <div className="container text-center mb-4">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          Trusted by detailers, studios, exteriors, and local service brands
+        </p>
+      </div>
       <div className="relative w-full">
         <div className="flex animate-scroll items-center gap-8">
           {/* First set of logos */}

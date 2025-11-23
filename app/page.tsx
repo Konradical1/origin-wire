@@ -6,6 +6,8 @@ import Contact from "@/components/contact"
 import Stats from "@/components/stats"
 import CompanyLogos from "@/components/company-logos"
 import Founder from "@/components/founder"
+import HowItDrivesSales from "@/components/how-it-drives-sales"
+import CTASection from "@/components/cta-section"
 
 export default function Home() {
   return (
@@ -13,9 +15,11 @@ export default function Home() {
       <Hero />
       <CompanyLogos />
       <Services />
+      <HowItDrivesSales />
       <Founder />
       <Portfolio />
       <Stats />
+      <CTASection />
       {/* <Testimonials /> */}
       <Contact />
     </div>

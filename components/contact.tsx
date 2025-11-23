@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import Link from "next/link"
@@ -20,12 +21,17 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
+    interestedIn: "",
     message: "",
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, interestedIn: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,6 +62,7 @@ export default function Contact() {
         name: "",
         email: "",
         phone: "",
+        interestedIn: "",
         message: "",
       });
     } catch (error) {
@@ -177,6 +184,24 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your phone number"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      Interested In
+                    </label>
+                    <Select onValueChange={handleSelectChange} value={formData.interestedIn}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="videography">Videography</SelectItem>
+                        <SelectItem value="social">Social Media Marketing</SelectItem>
+                        <SelectItem value="web">Web Design & Development</SelectItem>
+                        <SelectItem value="analytics">Analytics & Reporting</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div>

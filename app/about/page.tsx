@@ -1,29 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code2, Palette, Users, Server, User, Lightbulb, Target, Rocket, Heart, Briefcase } from "lucide-react"
-
-const team = [
-  {
-    name: "Lucy Redman",
-    role: "Creative Director & Photographer",
-    description: "Crafting visually stunning designs and capturing the essence of our clients' brands through photography.",
-    icon: Palette
-  },
-  {
-    name: "Rylen Dean",
-    role: "Business Development Strategist",
-    description: "Driving client relationships and business growth through strategic partnerships and innovative solutions.",
-    icon: Users
-  },
-  {
-    name: "Kyle Fischer",
-    role: "Backend Developer",
-    description: "Building robust and scalable backend systems to power our clients' digital solutions.",
-    icon: Server
-  }
-]
+import { Lightbulb, Target, Rocket, Heart, Briefcase, Users } from "lucide-react"
 
 const values = [
   {
@@ -197,49 +175,6 @@ export default function AboutPage() {
         </div>
       </motion.div>
 
-      {/* Team Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4">
-            Meet Our Team
-          </h2>
-          <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            We're a passionate team of developers, designers, and strategists working together to bring your digital vision to life.
-          </p>
-        </div>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-            >
-              <Card className="h-full flex flex-col">
-                <CardHeader className="pb-2">
-                  <div className="mb-4 inline-block rounded-lg bg-primary/10 p-3">
-                    <member.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">{member.name}</CardTitle>
-                  <CardDescription className="text-base font-medium">
-                    {member.role}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {member.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
     </main>
   )
 } 

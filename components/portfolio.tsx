@@ -5,74 +5,14 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Play } from "lucide-react"
+import { caseStudiesData } from "@/data/case-studies"
 
-const projects = [
-  {
-    title: "Precision Detailing",
-    description: "Created a comprehensive website for a premium car detailing service, featuring custom booking system, email integration, and brand identity design.",
-    image: "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1000&auto=format&fit=crop",
-    logo: "/images/PrecisionDetailing.png",
-    category: "Web Design",
-    secondaryCategory: "Brand Identity",
-    link: "/portfolio/precision-detailing"
-  },
-  {
-    title: "Buzz Wash Co",
-    description: "Developed a modern website for a power washing company, including booking functionality, custom email system, and marketing materials design.",
-    image: "https://skbuildingservices.com/wp-content/uploads/2023/06/Is-Powerwashing-driveway-worth-it-scaled.jpg",
-    logo: "/images/Buzzwash.png",
-    category: "Web Design",
-    secondaryCategory: "Digital Marketing",
-    link: "/portfolio/buzz-wash-co"
-  },
-  {
-    title: "Elevate Exteriors",
-    description: "Built a professional website for an exterior services company, featuring custom branding, logo design, and service showcase.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
-    logo: "/images/Elevate-01.png",
-    category: "Web Design",
-    secondaryCategory: "Brand Identity",
-    link: "/portfolio/elevate-exteriors"
-  },
-  {
-    title: "GH Cardetailing",
-    description: "Created a website handling booking and advertising for a premium auto detailing service, featuring online scheduling and service showcase.",
-    image: "https://www.nuviewautosalon.com/images/auto-detailing.jpg",
-    logo: "/images/GH.png",
-    category: "Custom Solutions",
-    secondaryCategory: "Digital Marketing",
-    link: "/portfolio/gh-cardetailing"
-  },
-  {
-    title: "Peaceful Path Massage",
-    description: "Developed a comprehensive web presence for a massage therapy business, including content creation, web design, and graphic design elements.",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop",
-    logo: "/images/Pathmassge.png",
-    category: "Web Design",
-    secondaryCategory: "Content Creation",
-    link: "/portfolio/peaceful-path-massage"
-  },
-  {
-    title: "Jewels and Jigsaws",
-    description: "Built an online storefront for a puzzle and retail business, implementing e-commerce solutions and engaging web design.",
-    image: "https://images.unsplash.com/photo-1611329857570-f02f340e7378?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    logo: "/images/JewelsandJigsaws.png",
-    category: "Web Design",
-    secondaryCategory: "Custom Solutions",
-    link: "/portfolio/jewels-and-jigsaws"
-  },
-  // {
-  //   title: "IEC Studios",
-  //   description: "Created a dynamic web presence for a game development company, featuring custom solutions and digital marketing strategies.",
-  //   image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop",
-  //   logo: "/images/IEC.png",
-  //   category: "Web Design",
-  //   secondaryCategory: "Digital Marketing",
-  //   link: "/portfolio/iec-studios"
-  // },
-]
+// Use the first 6 case studies from our data
+const projects = caseStudiesData.slice(0, 6)
 
-const allTags = ["Web Design", "Digital Marketing", "Graphic Design", "Content Creation", "Analytics", "Custom Solutions"]
+const allTags = ["Web Design", "Videography", "Social Media", "Content Creation", "Brand Identity", "Custom Solutions"]
 
 export default function Portfolio() {
   // Remove filter state and logic
@@ -92,10 +32,10 @@ export default function Portfolio() {
           className="text-center mb-8 sm:mb-12"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-3 sm:mb-4">
-            Our Work
+            Featured Work
           </h2>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto italic">
-            Explore OriginWire's latest projects and see how we've helped businesses transform their digital presence.
+            Real results from real clients. See how we've transformed content marketing into revenue-generating systems.
           </p>
         </motion.div>
 
@@ -104,7 +44,7 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -121,9 +61,19 @@ export default function Portfolio() {
                   priority={index < 3}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                {/* Logo overlay on hover - bigger size */}
+                
+                {/* Play button overlay for video content */}
+                {(project.category === "Videography" || project.category === "Social Media") && (
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <Play className="h-8 w-8 text-white ml-1" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Logo overlay on hover */}
                 {project.logo && (
-                  <div className="absolute bottom-4 left-4 w-36 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute bottom-4 left-4 w-32 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <Image
                       src={project.logo}
                       alt={project.title + ' logo'}
@@ -132,19 +82,35 @@ export default function Portfolio() {
                     />
                   </div>
                 )}
+
+                {/* Results preview */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/90 dark:bg-black/90 rounded-lg p-2 text-xs">
+                    {Object.entries(project.results).slice(0, 1).map(([key, value]) => (
+                      <div key={key} className="text-center">
+                        <div className="font-bold text-green-600">{value}</div>
+                        <div className="text-xs text-muted-foreground capitalize">
+                          {key.replace(/([A-Z])/g, ' $1').trim()}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
+              
               <div className="p-4 sm:p-6">
-                <div className="flex flex-wrap gap-1 mb-1">
-                  <span className="text-xs sm:text-sm font-medium text-purple-600 dark:text-purple-400">
+                <div className="flex flex-wrap gap-2 mb-2">
+                  <Badge variant="outline" className="text-xs">
                     {project.category}
-                  </span>
+                  </Badge>
                   {project.secondaryCategory && (
-                    <span className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400">
-                      • {project.secondaryCategory}
-                    </span>
+                    <Badge variant="outline" className="text-xs">
+                      {project.secondaryCategory}
+                    </Badge>
                   )}
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold mt-1 sm:mt-2 mb-1 sm:mb-2">{project.title}</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">{project.title}</h3>
+                <p className="text-sm text-primary mb-2">{project.goal}</p>
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 line-clamp-2">
                   {project.description}
                 </p>
@@ -152,7 +118,7 @@ export default function Portfolio() {
                   href={project.link}
                   className="inline-flex items-center text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  View Project
+                  View Case Study
                   <svg
                     className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2"
                     fill="none"

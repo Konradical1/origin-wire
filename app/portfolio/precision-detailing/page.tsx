@@ -4,8 +4,12 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ExternalLink, CheckCircle2 } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { ArrowLeft, ExternalLink, CheckCircle2, Play } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { caseStudiesData } from "@/data/case-studies"
+
+const caseStudy = caseStudiesData.find(study => study.id === "precision-detailing")!
 
 export default function PrecisionDetailingPage() {
   return (
@@ -15,103 +19,119 @@ export default function PrecisionDetailingPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mb-10"
+        className="mb-16"
       >
         <Button variant="ghost" asChild className="mb-6">
-          <Link href="/#portfolio">
+          <Link href="/work">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Portfolio
+            Back to Work
           </Link>
         </Button>
-        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-          <div className="relative w-full md:w-1/2 aspect-video rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1000&auto=format&fit=crop"
-              alt="Precision Detailing Website"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute bottom-3 left-3 w-24 h-12 md:w-32 md:h-16 opacity-80 pointer-events-none">
-              <Image
-                src="/images/PrecisionDetailing.png"
-                alt="Precision Detailing Logo Overlay"
-                fill
-                className="object-contain"
-              />
-            </div>
+        
+        <div className="text-center mb-8">
+          <div className="flex gap-2 justify-center mb-4">
+            <Badge>{caseStudy.category}</Badge>
+            <Badge variant="outline">{caseStudy.secondaryCategory}</Badge>
           </div>
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">Precision Detailing</h1>
-            <p className="text-lg text-muted-foreground mb-4">
-              A premium car detailing service with custom booking system and brand identity
-            </p>
-            <Button asChild size="lg" className="mb-2">
-              <Link href="https://precisiondetailingcincinnati.com" target="_blank">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Visit Website
-              </Link>
-            </Button>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{caseStudy.title}</h1>
+          <p className="text-xl text-primary mb-2">{caseStudy.goal}</p>
+          <p className="text-muted-foreground max-w-3xl mx-auto">{caseStudy.description}</p>
         </div>
       </motion.div>
 
-      {/* Content Sections */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card className="p-6">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Overview</h2>
-          <p className="text-muted-foreground">
-            Precision Detailing needed a professional website that would showcase their premium car detailing services
-            and allow customers to book appointments online. The project included custom email integration, logo design,
-            and a modern, user-friendly interface.
+      {/* Teaser Reel */}
+      <section className="mb-16">
+        <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted/50 mb-8">
+          <Image
+            src={caseStudy.image}
+            alt={`${caseStudy.title} showcase`}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <Button size="lg" className="gap-2">
+              <Play className="h-6 w-6" />
+              Watch Case Study
+            </Button>
+          </div>
+          <div className="absolute bottom-4 left-4 w-32 h-16">
+            <Image
+              src={caseStudy.logo}
+              alt={`${caseStudy.title} logo`}
+              fill
+              className="object-contain opacity-90"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Results</h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(caseStudy.results).map(([key, value]) => (
+            <Card key={key}>
+              <CardContent className="text-center p-6">
+                <div className="text-3xl font-bold text-green-600 mb-2">{value}</div>
+                <div className="text-sm text-muted-foreground capitalize">
+                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Tactics */}
+      <section className="mb-16">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Content Tactics</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3">
+                {caseStudy.tactics.map((tactic, index) => (
+                  <li key={index} className="flex items-center">
+                    <CheckCircle2 className="h-5 w-5 mr-3 text-green-500 flex-shrink-0" />
+                    {tactic}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Production Stack</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3">
+                {caseStudy.stack.map((item, index) => (
+                  <li key={index} className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-primary mr-3 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="text-center">
+        <div className="bg-primary/10 rounded-2xl p-8">
+          <h2 className="text-3xl font-bold mb-4">Want results like this?</h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Every successful campaign starts with understanding your goals and audience. Let's discuss how we can create similar success for your business.
           </p>
-        </Card>
-        <Card className="p-6">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Key Features</h2>
-          <ul className="space-y-2">
-            {[
-              "Custom Booking System",
-              "Email Integration",
-              "Logo Design",
-              "Service Showcase",
-              "Mobile-Responsive Design",
-              "Contact Form",
-              "Service Pricing",
-              "Before/After Gallery",
-              "Customer Testimonials"
-            ].map((feature, index) => (
-              <li key={index} className="flex items-start">
-                <CheckCircle2 className="h-5 w-5 mr-2 text-green-500 flex-shrink-0 mt-0.5" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
-        <Card className="p-6">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Technical Implementation</h2>
-          <p className="text-muted-foreground">
-            The website was built with a focus on user experience and functionality. We implemented a custom booking
-            system that integrates with email notifications, allowing for seamless appointment scheduling and
-            confirmation.
-          </p>
-        </Card>
-        <Card className="p-6">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Brand Identity</h2>
-          <p className="text-muted-foreground">
-            We created a distinctive brand identity for Precision Detailing, including a custom logo that reflects
-            their commitment to quality and attention to detail. The design emphasizes professionalism and premium
-            service.
-          </p>
-        </Card>
-        <Card className="p-6 md:col-span-2">
-          <h2 className="text-xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Results</h2>
-          <p className="text-muted-foreground">
-            The new website has significantly improved Precision Detailing's online presence, making it easier for
-            customers to book services and learn about their offerings. The professional design and seamless booking
-            process have helped increase customer engagement and streamline the appointment process.
-          </p>
-        </Card>
-      </div>
+          <Button size="lg" asChild>
+            <Link href="/book">Book a Call</Link>
+          </Button>
+        </div>
+      </section>
     </main>
   )
 } 

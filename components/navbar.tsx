@@ -4,11 +4,22 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 const navItems = [
   { name: "Home", href: "/" },
+  { 
+    name: "Services", 
+    href: "/services",
+    dropdown: [
+      { name: "Videography", href: "/services/videography" },
+      { name: "Social Media Marketing", href: "/services/social" },
+      { name: "Web Design & Development", href: "/services/web" },
+    ]
+  },
+  { name: "Work", href: "/work" },
+  { name: "Process", href: "/process" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ]
@@ -17,6 +28,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -40,6 +53,45 @@ const Navbar = () => {
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
+
+  // Helper functions for dropdown hover management
+  const handleDropdownEnter = (itemName: string) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout)
+      setHoverTimeout(null)
+    }
+    setDropdownOpen(itemName)
+  }
+
+  const handleDropdownLeave = () => {
+    const timeout = setTimeout(() => {
+      setDropdownOpen(null)
+    }, 100) // Small delay to allow moving to dropdown
+    setHoverTimeout(timeout)
+  }
+
+  const handleDropdownContentEnter = () => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout)
+      setHoverTimeout(null)
+    }
+  }
+
+  const handleDropdownContentLeave = () => {
+    const timeout = setTimeout(() => {
+      setDropdownOpen(null)
+    }, 100)
+    setHoverTimeout(timeout)
+  }
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout)
+      }
+    }
+  }, [hoverTimeout])
 
   return (
     <header
@@ -67,18 +119,56 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 items-center justify-end space-x-6">
           <nav className="flex items-center space-x-6">
             {navItems.map((item) => (
-              <Link 
-                key={item.name} 
-                href={item.href} 
-                className={`text-sm font-medium transition-all duration-300 hover:text-primary relative ${
-                  pathname === item.href ? "text-primary" : "text-foreground/70"
-                }`}
-              >
-                {item.name}
-                <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ${
-                  pathname === item.href ? "w-full" : "group-hover:w-full"
-                }`}></span>
-              </Link>
+              <div key={item.name} className="relative group">
+                {item.dropdown ? (
+                  <>
+                    <button
+                      className={`flex items-center space-x-1 text-sm font-medium transition-all duration-300 hover:text-primary relative ${
+                        pathname.startsWith('/services') ? "text-primary" : "text-foreground/70"
+                      }`}
+                      onMouseEnter={() => handleDropdownEnter(item.name)}
+                      onMouseLeave={handleDropdownLeave}
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                    {dropdownOpen === item.name && (
+                      <>
+                        {/* Invisible bridge to prevent flickering */}
+                        <div className="absolute top-full left-0 w-64 h-2 bg-transparent z-40" />
+                        <div 
+                          className="absolute top-full left-0 mt-2 w-64 bg-background border rounded-lg shadow-lg py-2 z-50 animate-in fade-in-0 zoom-in-95 duration-100"
+                          onMouseEnter={handleDropdownContentEnter}
+                          onMouseLeave={handleDropdownContentLeave}
+                        >
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-sm text-foreground/70 hover:text-primary hover:bg-accent transition-colors"
+                            onClick={() => setDropdownOpen(null)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <Link 
+                    href={item.href} 
+                    className={`text-sm font-medium transition-all duration-300 hover:text-primary relative ${
+                      pathname === item.href ? "text-primary" : "text-foreground/70"
+                    }`}
+                  >
+                    {item.name}
+                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ${
+                      pathname === item.href ? "w-full" : "group-hover:w-full"
+                    }`}></span>
+                  </Link>
+                )}
+              </div>
             ))}
           </nav>
           <div className="flex items-center space-x-4">

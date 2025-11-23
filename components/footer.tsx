@@ -105,6 +105,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-16 border-t pt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+          <p className="mb-2">Serving Cincinnati & beyond</p>
           <p>© {new Date().getFullYear()} OriginWire. All rights reserved.</p>
         </div>
       </div>

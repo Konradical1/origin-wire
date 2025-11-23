@@ -117,7 +117,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            At OriginWire, we create stunning websites and digital experiences that help businesses grow and succeed in the digital age.
+            We craft websites and content that fuel your brand across social channels then analyze the impact. Not just visuals, a growth engine.
           </motion.p>
         </div>
         <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -133,8 +133,8 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button size="lg" variant="outline" onClick={scrollToPortfolio}>
-              View Our Work
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/services/videography">See Packages</Link>
             </Button>
           </motion.div>
         </div>

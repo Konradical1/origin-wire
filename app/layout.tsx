@@ -16,9 +16,9 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "OriginWire - Web Development & Design",
-  description: "Professional web development and design services specializing in modern, responsive websites and custom web applications. Transform your digital presence with our expert team.",
-  keywords: "web development, web design, custom websites, responsive design, digital agency, web applications, UI/UX design",
+  title: "OriginWire - Videography & Social Media Marketing",
+  description: "Wiring your business for the digital future. We craft websites and content that fuel your brand across social channels then analyze the impact. Not just visuals, a growth engine.",
+  keywords: "videography, social media marketing, video content, content creation, social media management, video production, digital marketing, Cincinnati",
   authors: [{ name: "OriginWire" }],
   creator: "OriginWire",
   publisher: "OriginWire",
@@ -43,27 +43,27 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://originwire.com',
-    title: "OriginWire - Web Development & Design",
-    description: "Professional web development and design services specializing in modern, responsive websites and custom web applications.",
+    title: "OriginWire - Videography & Social Media Marketing",
+    description: "Wiring your business for the digital future. We craft websites and content that fuel your brand across social channels then analyze the impact.",
     siteName: "OriginWire",
     images: [
       {
-        url: "/images/MainWebImage.png",
+        url: "/images/MainVideographyImage.png",
         width: 1152,
         height: 768,
-        alt: "OriginWire Web Design Illustration"
+        alt: "OriginWire Videography & Social Media Marketing"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "OriginWire - Web Development & Design",
-    description: "Professional web development and design services specializing in modern, responsive websites and custom web applications.",
+    title: "OriginWire - Videography & Social Media Marketing",
+    description: "Wiring your business for the digital future. We craft websites and content that fuel your brand across social channels then analyze the impact.",
     creator: "@originwire",
     images: [
       {
-        url: "/images/MainWebImage.png",
-        alt: "OriginWire Web Design Illustration"
+        url: "/images/MainVideographyImage.png",
+        alt: "OriginWire Videography & Social Media Marketing"
       }
     ]
   },
